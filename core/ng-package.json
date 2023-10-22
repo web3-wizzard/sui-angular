@@ -1,0 +1,16 @@
+{
+  "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../dist/core",
+  "lib": {
+    "entryFile": "src/index.ts"
+  },
+  "allowedNonPeerDependencies": [
+    "@angular/material",
+    "@mysten/wallet-adapter-wallet-standard",
+    "@angular/cdk",
+    "@rx-angular/template",
+    "@rx-angular/cdk",
+    "@ngrx/component-store",
+    "bignumber.js"
+  ]
+}

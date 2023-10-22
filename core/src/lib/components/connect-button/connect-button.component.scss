@@ -1,0 +1,110 @@
+.btn {
+  -ms-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 1.6;
+  overflow: hidden;
+  padding: 12px 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  user-select: none;
+  vertical-align: middle;
+  width: 100%;
+  z-index: 1;
+}
+
+.btn:after {
+  content: '';
+  position: absolute;
+  background-color: inherit;
+  height: 100%;
+  width: 7px;
+  left: -12px;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.btn:hover:after {
+  transition: all 0.5s;
+  border-right: 7px solid #fff;
+  opacity: 0;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+@mixin button {
+  color: #ffffff;
+  background-color: var(--button-background);
+  border-color: var(--button-background);
+  &:hover {
+    background-color: var(--button-background-active);
+    border-color: var(--button-border-active);
+    color: #ffffff;
+  }
+
+  &:focus {
+    background-color: var(--button-background-active);
+    border-color: var(--button-border-active);
+    box-shadow: 0 0 0 0 var(--button-active-box-shadow);
+  }
+
+  &.active:focus {
+    box-shadow: 0 0 0 0 var(--button-active-box-shadow);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--button-background);
+    border-color: var(--button-background);
+  }
+
+  &.btn-shadow {
+    box-shadow: 0px 4px 10px var(--button-box-shadow);
+  }
+
+  &:after {
+    background-color: #090915;
+  }
+}
+
+.btn {
+  &-primary {
+    --button-background: var(--dx-color-button-primary-background, rgba(2, 163, 254, 1));
+    --button-background-active: var(--dx-color-button-primary-background, rgba(2, 163, 254, 1));
+    --button-box-shadow: var(--dx-color-button-primary-box-shadow, rgba(2, 163, 254, 0.2));
+    --button-border-active: var(--dx-color-button-primary-active-border, rgba(27, 172, 254, 1));
+    --button-active-box-shadow: var(
+      --dx-color-button-primary-active-box-shadow,
+      rgba(2, 139, 216, 0.5)
+    );
+    @include button;
+  }
+}
+
+.disabled {
+  .btn-primary {
+    --button-background: var(--dx-color-disabled, rgba(255, 255, 255, 0.38));
+    --button-box-shadow: var(--dx-color-disabled, rgba(255, 255, 255, 0.38));
+  }
+}

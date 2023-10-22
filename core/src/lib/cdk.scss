@@ -1,0 +1,260 @@
+.cdk-high-contrast-active .mat-ripple-element {
+  display: none;
+}
+.cdk-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  outline: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  left: 0;
+}
+[dir='rtl'] .cdk-visually-hidden {
+  left: auto;
+  right: 0;
+}
+.cdk-overlay-container,
+.cdk-global-overlay-wrapper {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1000;
+}
+.cdk-overlay-container:empty {
+  display: none;
+}
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+}
+.cdk-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+}
+.cdk-overlay-backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0;
+}
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 1;
+}
+.cdk-high-contrast-active .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0.6;
+}
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.32);
+}
+.cdk-overlay-transparent-backdrop {
+  transition: visibility 1ms linear, opacity 1ms linear;
+  visibility: hidden;
+  opacity: 1;
+}
+.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0;
+  visibility: visible;
+}
+.cdk-overlay-backdrop-noop-animation {
+  transition: none;
+}
+.cdk-overlay-connected-position-bounding-box {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 1px;
+  min-height: 1px;
+}
+.cdk-global-scrollblock {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
+}
+textarea.cdk-textarea-autosize {
+  resize: none;
+}
+textarea.cdk-textarea-autosize-measuring {
+  padding: 2px 0 !important;
+  box-sizing: content-box !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+textarea.cdk-textarea-autosize-measuring-firefox {
+  padding: 2px 0 !important;
+  box-sizing: content-box !important;
+  height: 0 !important;
+}
+@keyframes cdk-text-field-autofill-start {
+  /*!*/
+}
+@keyframes cdk-text-field-autofill-end {
+  /*!*/
+}
+.cdk-text-field-autofill-monitored:-webkit-autofill {
+  animation: cdk-text-field-autofill-start 0s 1ms;
+}
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+  animation: cdk-text-field-autofill-end 0s 1ms;
+}
+.cdk-high-contrast-active {
+  --mat-focus-indicator-display: block;
+}
+
+html {
+  --mat-option-selected-state-label-text-color: #3f51b5;
+  --mat-option-label-text-color: rgba(0, 0, 0, 0.87);
+  --mat-option-hover-state-layer-color: rgba(0, 0, 0, 0.04);
+  --mat-option-focus-state-layer-color: rgba(0, 0, 0, 0.04);
+  --mat-option-selected-state-layer-color: rgba(0, 0, 0, 0.04);
+}
+html {
+  --mat-optgroup-label-text-color: rgba(0, 0, 0, 0.87);
+}
+
+html {
+  --mat-option-label-text-font: Roboto, sans-serif;
+  --mat-option-label-text-line-height: 24px;
+  --mat-option-label-text-size: 16px;
+  --mat-option-label-text-tracking: 0.03125em;
+  --mat-option-label-text-weight: 400;
+}
+html {
+  --mat-optgroup-label-text-font: Roboto, sans-serif;
+  --mat-optgroup-label-text-line-height: 24px;
+  --mat-optgroup-label-text-size: 16px;
+  --mat-optgroup-label-text-tracking: 0.03125em;
+  --mat-optgroup-label-text-weight: 400;
+}
+
+html {
+  --mdc-filled-text-field-label-text-font: Roboto, sans-serif;
+  --mdc-filled-text-field-label-text-size: 16px;
+  --mdc-filled-text-field-label-text-tracking: 0.03125em;
+  --mdc-filled-text-field-label-text-weight: 400;
+  --mdc-outlined-text-field-label-text-font: Roboto, sans-serif;
+  --mdc-outlined-text-field-label-text-size: 16px;
+  --mdc-outlined-text-field-label-text-tracking: 0.03125em;
+  --mdc-outlined-text-field-label-text-weight: 400;
+  --mat-form-field-container-text-font: Roboto, sans-serif;
+  --mat-form-field-container-text-line-height: 24px;
+  --mat-form-field-container-text-size: 16px;
+  --mat-form-field-container-text-tracking: 0.03125em;
+  --mat-form-field-container-text-weight: 400;
+  --mat-form-field-outlined-label-text-populated-size: 16px;
+  --mat-form-field-subscript-text-font: Roboto, sans-serif;
+  --mat-form-field-subscript-text-line-height: 20px;
+  --mat-form-field-subscript-text-size: 12px;
+  --mat-form-field-subscript-text-tracking: 0.0333333333em;
+  --mat-form-field-subscript-text-weight: 400;
+}
+html {
+  --mat-select-panel-background-color: white;
+  --mat-select-enabled-trigger-text-color: rgba(0, 0, 0, 0.87);
+  --mat-select-disabled-trigger-text-color: rgba(0, 0, 0, 0.38);
+  --mat-select-placeholder-text-color: rgba(0, 0, 0, 0.6);
+  --mat-select-enabled-arrow-color: rgba(0, 0, 0, 0.54);
+  --mat-select-disabled-arrow-color: rgba(0, 0, 0, 0.38);
+  --mat-select-focused-arrow-color: rgba(63, 81, 181, 0.87);
+  --mat-select-invalid-arrow-color: rgba(244, 67, 54, 0.87);
+}
+html .mat-mdc-form-field.mat-accent {
+  --mat-select-panel-background-color: white;
+  --mat-select-enabled-trigger-text-color: rgba(0, 0, 0, 0.87);
+  --mat-select-disabled-trigger-text-color: rgba(0, 0, 0, 0.38);
+  --mat-select-placeholder-text-color: rgba(0, 0, 0, 0.6);
+  --mat-select-enabled-arrow-color: rgba(0, 0, 0, 0.54);
+  --mat-select-disabled-arrow-color: rgba(0, 0, 0, 0.38);
+  --mat-select-focused-arrow-color: rgba(255, 64, 129, 0.87);
+  --mat-select-invalid-arrow-color: rgba(244, 67, 54, 0.87);
+}
+html .mat-mdc-form-field.mat-warn {
+  --mat-select-panel-background-color: white;
+  --mat-select-enabled-trigger-text-color: rgba(0, 0, 0, 0.87);
+  --mat-select-disabled-trigger-text-color: rgba(0, 0, 0, 0.38);
+  --mat-select-placeholder-text-color: rgba(0, 0, 0, 0.6);
+  --mat-select-enabled-arrow-color: rgba(0, 0, 0, 0.54);
+  --mat-select-disabled-arrow-color: rgba(0, 0, 0, 0.38);
+  --mat-select-focused-arrow-color: rgba(244, 67, 54, 0.87);
+  --mat-select-invalid-arrow-color: rgba(244, 67, 54, 0.87);
+}
+html {
+  --mat-select-trigger-text-font: Roboto, sans-serif;
+  --mat-select-trigger-text-line-height: 24px;
+  --mat-select-trigger-text-size: 16px;
+  --mat-select-trigger-text-tracking: 0.03125em;
+  --mat-select-trigger-text-weight: 400;
+}
+html {
+  --mat-autocomplete-background-color: white;
+}
+.mat-mdc-button.cdk-program-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-button.cdk-keyboard-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-outlined-button.cdk-program-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-outlined-button.cdk-keyboard-focused .mat-mdc-button-persistent-ripple::before {
+  opacity: 0.12;
+}
+.mat-mdc-raised-button.cdk-program-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-raised-button.cdk-keyboard-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-unelevated-button.cdk-program-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-unelevated-button.cdk-keyboard-focused .mat-mdc-button-persistent-ripple::before {
+  opacity: 0.12;
+}
+
+.mat-mdc-icon-button.cdk-program-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-icon-button.cdk-keyboard-focused .mat-mdc-button-persistent-ripple::before {
+  opacity: 0.12;
+}
+
+.mat-mdc-fab.cdk-program-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-fab.cdk-keyboard-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-mini-fab.cdk-program-focused .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-mini-fab.cdk-keyboard-focused .mat-mdc-button-persistent-ripple::before {
+  opacity: 0.12;
+}
+.cdk-high-contrast-active .mat-badge-content {
+  outline: solid 1px;
+  border-radius: 0;
+}
+
+.account-dropdown {
+  background-color: var(--dx-color-background-tertiary, rgba(247, 248, 248, 1)) !important;
+  margin-top: 0.6rem;
+
+  &.mat-mdc-menu-panel {
+    --mat-menu-container-shape: 0.8rem !important;
+  }
+
+  // &.mat-mdc-menu-panel {
+  //   min-width: 200px;
+  //   min-height: 260px;
+  // }
+
+  .mat-mdc-menu-content {
+    height: 100%;
+  }
+}

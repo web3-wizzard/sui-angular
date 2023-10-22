@@ -1,0 +1,13 @@
+<div
+  class="flex items-center py-8 px-16 connected-button mx-12 cursor-pointer"
+  [matMenuTriggerFor]="menu"
+>
+  <img [src]="'sui-angular/' + (walletName | walletIcon) + '.svg'" />
+  <div class="ml-4 text-14 text-primary">{{ account }}</div>
+</div>
+
+<mat-menu class="account-dropdown" #menu="matMenu">
+  <div class="flex justify-start px-16 h-full" (click)="$event.stopPropagation()">
+    <button mat-button (click)="onDisconnect()">{{disconnectText}}</button>
+  </div>
+</mat-menu>

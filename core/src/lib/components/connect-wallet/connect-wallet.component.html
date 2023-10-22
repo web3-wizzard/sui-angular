@@ -1,0 +1,75 @@
+<div class="flex h-full">
+  <div class="p-20 w-240">
+    <text-header [text]="data.connectWalletText"></text-header>
+    <ng-container *rxIf="adapters().length; else dummyAdapter">
+      <wallet-button
+        *rxFor="let adapter of adapters()"
+        [icon]="adapter.name"
+        (click)="connectWallet(adapter)"
+      ></wallet-button>
+    </ng-container>
+
+    <ng-template #dummyAdapter>
+      <wallet-button [icon]="sui" (click)="registerWallet()"></wallet-button>
+    </ng-template>
+  </div>
+  <div class="description flex-1 p-20 flex flex-col items-center justify-center">
+    <ng-container *rxIf="!isConnecting(); else connecting">
+      <text-header [text]="data.whatIsWalletText"></text-header>
+
+      <div class="flex justify-center flex-1 flex-col">
+        <text-card
+          class="mt-16"
+          [header]="data.easyLoginHeaderText"
+          [description]="data.easyLoginDescriptionText"
+        ></text-card>
+        <text-card
+          class="mt-16"
+          [header]="data.storeHeaderText"
+          [description]="data.storeDescriptionText"
+        ></text-card>
+      </div>
+    </ng-container>
+
+    <ng-template #connecting>
+      <div class="flex flex-col items-center" *rxIf="adapters().length; else registerWalletTmp">
+        <img [src]="'sui-angular/' + (isConnecting() | walletIcon) + '.svg'" />
+        <div class="text-20 text-primary mt-12">{{ data.openingText }} {{ isConnecting() }}</div>
+        <div *rxIf="!error(); else errorTmp" class="text-tertiary text-13">
+          {{ data.confirmConnectText }}
+        </div>
+        <ng-template #errorTmp>
+          <div class="text-error text-13">{{ error() }}</div>
+        </ng-template>
+      </div>
+    </ng-template>
+
+    <ng-template #registerWalletTmp>
+      <text-header [text]="data.getStartedSuiText"></text-header>
+
+      <div class="flex justify-center flex-1 flex-col">
+        <text-card
+          [header]="data.installExtensionHeaderText"
+          [description]="data.installExtensionDescriptionText"
+        ></text-card>
+        <text-card
+          class="mt-16"
+          [header]="data.createOrImportHeaderText"
+          [description]="data.createOrImportDescriptionText"
+        ></text-card>
+        <text-card
+          class="mt-16"
+          [header]="data.refreshBrowserHeaderText"
+          [description]="data.refreshBrowserDescriptionText"
+        ></text-card>
+      </div>
+
+      <div class="flex justify-end w-full">
+        <connect-button
+          (click)="connectSui()"
+          [text]="data.installWalletExtensionText"
+        ></connect-button>
+      </div>
+    </ng-template>
+  </div>
+</div>

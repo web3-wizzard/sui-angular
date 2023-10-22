@@ -1,0 +1,15 @@
+<connect-button
+  class="block mx-12"
+  *rxIf="!walletName(); else walletButton"
+  [text]="connectButtonText"
+  (click)="openConnectModal()"
+></connect-button>
+
+<ng-template #walletButton>
+  <account-wallet-button
+    [walletName]="walletName()"
+    [walletAccount]="walletAccount()"
+    [disconnectText]="disconnectText"
+    (disconnect)="onDisconnect()"
+  ></account-wallet-button>
+</ng-template>
