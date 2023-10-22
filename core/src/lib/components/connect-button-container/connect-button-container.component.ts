@@ -13,7 +13,7 @@ import { AuthService, OnConnectDataInterface } from '../../services';
 import { WalletStandardAdapterProvider } from '@mysten/wallet-adapter-wallet-standard';
 import { ConnectButtonContainerStore } from './connect-button-container.store';
 import { ConnectedWalletInterface, SUI_DEVNET_CHAIN } from '../../models';
-import { ConnectButtonComponent } from '../connect-button/connect-button.component';
+import { ButtonComponent } from '../button/button.component';
 
 
 /**
@@ -30,7 +30,7 @@ export const BROWSER_EXTENRENSIONS_LATENCY = 100;
   styleUrls: ['./connect-button-container.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ConnectButtonComponent, AccountWalletButtonComponent, RxIf],
+  imports: [ButtonComponent, AccountWalletButtonComponent, RxIf],
   providers: [ConnectButtonContainerStore],
 })
 /**

@@ -14,7 +14,7 @@ import { RxIf } from '@rx-angular/template/if';
 import { RxFor } from '@rx-angular/template/for';
 import { WalletIconEnum } from '../../models';
 import { WalletIconPipe } from '../../pipes';
-import { ConnectButtonComponent } from '../connect-button';
+import { ButtonComponent } from '../button';
 import { TextCardComponent } from '../text-card';
 import { TextHeaderComponent } from '../text-header';
 import { WalletButtonComponent } from '../wallet-button';
@@ -32,7 +32,7 @@ import { WalletButtonComponent } from '../wallet-button';
     TextCardComponent,
     TextHeaderComponent,
     WalletButtonComponent,
-    ConnectButtonComponent,
+    ButtonComponent,
   ],
 })
 /**

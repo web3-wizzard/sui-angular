@@ -100,6 +100,15 @@
     );
     @include button;
   }
+
+  &-secondary {
+    --button-background: var(--sa-color-button-secondary-background, rgba(251, 186, 36, 1));
+    --button-background-active: var(--sa-color-button-secondary-background, rgba(251, 186, 36, 1));
+    --button-box-shadow: var(--sa-color-button-secondary-box-shadow, rgba(251, 186, 36, 0.2));
+    --button-border-active: var(--sa-color-button-secondary-active-border, rgba(240, 174, 4));
+    --button-active-box-shadow: var(--sa-color-button-secondary-active-box-shadow, rgba(251, 186, 36, 0.5));
+    @include button;
+  }
 }
 
 .disabled {

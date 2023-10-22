@@ -1,9 +1,9 @@
-<connect-button
+<sa-button
   class="block mx-12"
   *rxIf="!walletName(); else walletButton"
   [text]="connectButtonText"
   (click)="openConnectModal()"
-></connect-button>
+></sa-button>
 
 <ng-template #walletButton>
   <account-wallet-button

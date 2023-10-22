@@ -3,7 +3,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {
   ConnectButtonContainerComponent,
   AccountWalletButtonComponent,
-  ConnectButtonComponent,
+  ButtonComponent,
   ConnectWalletComponent,
   TextCardComponent,
   TextHeaderComponent,
@@ -15,7 +15,7 @@ import { AuthService } from './services';
   imports: [
     ConnectButtonContainerComponent,
     AccountWalletButtonComponent,
-    ConnectButtonComponent,
+    ButtonComponent,
     ConnectWalletComponent,
     TextCardComponent,
     TextHeaderComponent,
@@ -26,7 +26,7 @@ import { AuthService } from './services';
   exports: [
     ConnectButtonContainerComponent,
     AccountWalletButtonComponent,
-    ConnectButtonComponent,
+    ButtonComponent,
     ConnectWalletComponent,
     TextCardComponent,
     TextHeaderComponent,
