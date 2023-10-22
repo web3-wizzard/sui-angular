@@ -1,3 +1,8 @@
+:host.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 .btn {
   -ms-transition: all 0.2s;
   -webkit-transition: all 0.2s;

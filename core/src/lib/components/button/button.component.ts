@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'sa-button',
@@ -18,4 +18,8 @@ export class ButtonComponent {
 
   @Input()
   public type: 'primary' | 'secondary' = 'primary';
+
+  @HostBinding('class.disabled')
+  @Input()
+  public disabled?: boolean;
 }
