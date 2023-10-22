@@ -62,3 +62,4 @@ public connected(event: ConnectedWalletInterface): void {
 }
 ...
 ```
+.
