@@ -90,12 +90,12 @@
 
 .btn {
   &-primary {
-    --button-background: var(--dx-color-button-primary-background, rgba(2, 163, 254, 1));
-    --button-background-active: var(--dx-color-button-primary-background, rgba(2, 163, 254, 1));
-    --button-box-shadow: var(--dx-color-button-primary-box-shadow, rgba(2, 163, 254, 0.2));
-    --button-border-active: var(--dx-color-button-primary-active-border, rgba(27, 172, 254, 1));
+    --button-background: var(--sa-color-button-primary-background, rgba(2, 163, 254, 1));
+    --button-background-active: var(--sa-color-button-primary-background, rgba(2, 163, 254, 1));
+    --button-box-shadow: var(--sa-color-button-primary-box-shadow, rgba(2, 163, 254, 0.2));
+    --button-border-active: var(--sa-color-button-primary-active-border, rgba(27, 172, 254, 1));
     --button-active-box-shadow: var(
-      --dx-color-button-primary-active-box-shadow,
+      --sa-color-button-primary-active-box-shadow,
       rgba(2, 139, 216, 0.5)
     );
     @include button;
@@ -104,7 +104,7 @@
 
 .disabled {
   .btn-primary {
-    --button-background: var(--dx-color-disabled, rgba(255, 255, 255, 0.38));
-    --button-box-shadow: var(--dx-color-disabled, rgba(255, 255, 255, 0.38));
+    --button-background: var(--sa-color-disabled, rgba(255, 255, 255, 0.38));
+    --button-box-shadow: var(--sa-color-disabled, rgba(255, 255, 255, 0.38));
   }
 }

@@ -1,9 +1,9 @@
 .connect-wallet-dialog {
   .mat-mdc-dialog-container {
-    --mdc-dialog-container-color: var(--dx-color-background-tertiary, rgba(247, 248, 248, 1));
+    --mdc-dialog-container-color: var(--sa-color-background-tertiary, rgba(247, 248, 248, 1));
     --mdc-dialog-container-shape: 8px;
     .mat-mdc-dialog-surface {
-      border: 1px solid var(--dx-color-divider, rgba(24, 24, 27, 0.05));
+      border: 1px solid var(--sa-color-divider, rgba(24, 24, 27, 0.05));
     }
   }
 }

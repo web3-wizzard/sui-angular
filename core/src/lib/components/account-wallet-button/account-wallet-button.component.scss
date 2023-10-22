@@ -1,9 +1,9 @@
 .connected-button {
-  background-color: var(--dx-color-background-tertiary, rgba(247, 248, 248, 1));
+  background-color: var(--sa-color-background-tertiary, rgba(247, 248, 248, 1));
   border-radius: 12px;
-  border: 1px solid var(--dx-color-background-tertiary, rgba(247, 248, 248, 1));
+  border: 1px solid var(--sa-color-background-tertiary, rgba(247, 248, 248, 1));
 }
 
 .connected-button:hover {
-  background-color: var(--dx-color-background-quaternary, rgba(255, 255, 255, 1));
+  background-color: var(--sa-color-background-quaternary, rgba(255, 255, 255, 1));
 }
