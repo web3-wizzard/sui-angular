@@ -192,5 +192,6 @@ export class ConnectButtonContainerComponent implements OnInit {
    */
   public onDisconnect(): void {
     this.compStore.clearWallet();
+    this.connected.emit(undefined)
   }
 }
