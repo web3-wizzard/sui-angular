@@ -1,6 +1,6 @@
 {
   "name": "@sui-angular/core",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0"
@@ -15,5 +15,10 @@
     "@ngrx/component-store": "^16.3.0",
     "bignumber.js": "^9.1.1"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/web3-wizzard/sui-angular.git"
+  },
+  "license": "Apache-2.0"
 }

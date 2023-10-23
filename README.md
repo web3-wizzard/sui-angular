@@ -62,3 +62,5 @@ public connected(event: ConnectedWalletInterface): void {
 }
 ...
 ```
+
+![Visitor Count](https://profile-counter.glitch.me/sui-angular/count.svg)
