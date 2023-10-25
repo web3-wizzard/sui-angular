@@ -12,7 +12,7 @@ import { RxIf } from '@rx-angular/template/if';
 import { AuthService, OnConnectDataInterface } from '../../services';
 import { WalletStandardAdapterProvider } from '@mysten/wallet-adapter-wallet-standard';
 import { ConnectButtonContainerStore } from './connect-button-container.store';
-import { ConnectedWalletInterface, SUI_DEVNET_CHAIN } from '../../models';
+import { ConnectedWalletInterface, SUI_MAINNET_CHAIN } from '../../models';
 import { ButtonComponent } from '../button/button.component';
 
 
@@ -95,7 +95,7 @@ export class ConnectButtonContainerComponent implements OnInit {
     setTimeout(() => {
       if (walletName && walletAccount) {
         const adapters = new WalletStandardAdapterProvider().get();
-
+        console.log(adapters, 'adapters')
         const wallet = adapters.find((adapter) => adapter.name === walletName);
 
         if (wallet) {
@@ -148,7 +148,7 @@ export class ConnectButtonContainerComponent implements OnInit {
    */
   public async openConnectModal(): Promise<void> {
     const dialogRef = await this.authService.onConnect({
-      network: SUI_DEVNET_CHAIN,
+      network: SUI_MAINNET_CHAIN,
       connectWalletText: this.translations?.connectWalletText,
       whatIsWalletText: this.translations?.whatIsWalletText,
       easyLoginHeaderText: this.translations?.easyLoginHeaderText,

@@ -1,4 +1,15 @@
 export enum WalletIconEnum {
   Sui = 'Sui Wallet',
   Suiet = 'Suiet',
+  Elli = 'Elli',
+  Ethos = 'Ethos Wallet',
+  Frontier = "Frontier Wallet",
+  Glass = "GlassWallet",
+  Martian = "Martian Sui Wallet",
+  Morphis = "Morphis Wallet",
+  Nightly = "Nightly",
+  OneKey = "OneKey Wallet",
+  SenSui = "SenSui Wallet",
+  Spacecy = "Spacecy Sui Wallet",
+  Surf = "Surf Wallet",
 }

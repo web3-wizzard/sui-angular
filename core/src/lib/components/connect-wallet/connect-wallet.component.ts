@@ -18,7 +18,7 @@ import { ButtonComponent } from '../button';
 import { TextCardComponent } from '../text-card';
 import { TextHeaderComponent } from '../text-header';
 import { WalletButtonComponent } from '../wallet-button';
-
+import { SUI_MAINNET_CHAIN } from '../../models';
 @Component({
   selector: 'connect-wallet',
   templateUrl: './connect-wallet.component.html',
@@ -102,7 +102,10 @@ export class ConnectWalletComponent implements OnInit {
         .then(() => {
           this.handleConnect(adapter);
         })
-        .catch((error) => this.error.set(error.toString()));
+        .catch((error) => {
+          console.log(error, 'error')
+          this.error.set(error.message ?? error.toString())
+        });
     }
   }
 
@@ -118,11 +121,22 @@ export class ConnectWalletComponent implements OnInit {
    * @returns {void} - This method does not return a value.
    */
   private handleConnect(adapter: StandardWalletAdapter): void {
-    const account =
-      this.data?.network &&
-      adapter.wallet.accounts.find((account) =>
-        account.chains.includes(this.data?.network)
+    let account;
+
+    if (
+      this.data?.network === SUI_MAINNET_CHAIN &&
+      adapter.wallet.name === 'Frontier Wallet!'
+    ) {
+      account = adapter.wallet.accounts.find((account) =>
+        account.chains.includes('sui' as '${string}:${string}')
       );
+    } else {
+      account =
+        this.data?.network &&
+        adapter.wallet.accounts.find((account) =>
+          account.chains.includes(this.data?.network)
+        );
+    }
 
     if (account) {
       this.dialogRef.close({
