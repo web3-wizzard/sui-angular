@@ -10,6 +10,7 @@ import {
   WalletButtonComponent,
 } from './components';
 import { AuthService } from './services';
+import { WalletStandardService } from './services/wallet-standard.service';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { AuthService } from './services';
     WalletButtonComponent,
     MatDialogModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, WalletStandardService],
   exports: [
     ConnectButtonContainerComponent,
     AccountWalletButtonComponent,

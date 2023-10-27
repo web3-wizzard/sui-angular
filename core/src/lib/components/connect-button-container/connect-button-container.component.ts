@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   EventEmitter,
   Input,
   OnInit,
@@ -10,19 +11,14 @@ import {
 import { AccountWalletButtonComponent } from '../account-wallet-button';
 import { RxIf } from '@rx-angular/template/if';
 import { AuthService, OnConnectDataInterface } from '../../services';
-import { WalletStandardAdapterProvider } from '@mysten/wallet-adapter-wallet-standard';
 import { ConnectButtonContainerStore } from './connect-button-container.store';
 import { ConnectedWalletInterface, SUI_MAINNET_CHAIN } from '../../models';
 import { ButtonComponent } from '../button/button.component';
-
-
-/**
- * The time required to initialize wallet extensions in a web browser.
- *
- * This constant represents the time in milliseconds that is needed for the
- * initialization of wallet extensions in a web browser.
- */
-export const BROWSER_EXTENRENSIONS_LATENCY = 100;
+import { WalletStandardService } from '../../services/wallet-standard.service';
+import { StandardConnectMethod, Wallet } from '@mysten/wallet-standard';
+import { has } from 'lodash-es';
+import { EMPTY, catchError, exhaustMap, filter, map, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'connect-button-container',
@@ -39,7 +35,10 @@ export const BROWSER_EXTENRENSIONS_LATENCY = 100;
 export class ConnectButtonContainerComponent implements OnInit {
   private readonly authService = inject(AuthService);
   private readonly compStore = inject(ConnectButtonContainerStore);
-
+  private readonly walletStandardService = inject(WalletStandardService);
+  private readonly destroyRef = inject(DestroyRef);
+  
+  private _connected = false;
   public readonly walletName = this.compStore.selectWalletName;
   public readonly walletAccount = this.compStore.selectAccount;
 
@@ -92,27 +91,35 @@ export class ConnectButtonContainerComponent implements OnInit {
     const walletName = this.walletName();
     const walletAccount = this.walletAccount();
 
-    setTimeout(() => {
-      if (walletName && walletAccount) {
-        const adapters = new WalletStandardAdapterProvider().get();
-       
-        const wallet = adapters.find((adapter) => adapter.name === walletName);
+    this.walletStandardService.availableWalletAdapters$
+      .pipe(
+        filter(() => !!walletName && !!walletAccount),
+        map((wallets: readonly Wallet[]) =>
+          wallets.find((adapter) => adapter.name === walletName)
+        ),
+        filter((walletAdapter: Wallet | undefined): walletAdapter is Wallet => !!walletAdapter && has(walletAdapter?.features, 'standard:connect')),
+        map((walletAdapter: Wallet) => walletAdapter.features['standard:connect'] as {
+          connect: StandardConnectMethod;
+        }),
+        filter(() => !this._connected),
+        exhaustMap((feature) => feature.connect()),
+        tap(() => {
+          this.connected.emit({
+            account: walletAccount as string,
+            name: walletName as string,
+          });
 
-        if (wallet) {
-          wallet
-            .connect()
-            .then(() =>
-              this.connected.emit({
-                account: walletAccount,
-                name: walletName,
-              })
-            )
-            .catch(() => {
-              this.compStore.clearWallet();
-            });
-        }
-      }
-    }, BROWSER_EXTENRENSIONS_LATENCY);
+          this._connected = true;
+        }),
+        catchError(() => {
+          this._connected = false;
+          this.compStore.clearWallet();
+
+          return EMPTY;
+        }),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe();
   }
 
   /**
@@ -192,6 +199,6 @@ export class ConnectButtonContainerComponent implements OnInit {
    */
   public onDisconnect(): void {
     this.compStore.clearWallet();
-    this.connected.emit(undefined)
+    this.connected.emit(undefined);
   }
 }

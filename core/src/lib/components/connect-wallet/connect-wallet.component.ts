@@ -1,14 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
   inject,
   signal,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {
   StandardWalletAdapter,
-  WalletStandardAdapterProvider,
 } from '@mysten/wallet-adapter-wallet-standard';
 import { RxIf } from '@rx-angular/template/if';
 import { RxFor } from '@rx-angular/template/for';
@@ -19,6 +17,11 @@ import { TextCardComponent } from '../text-card';
 import { TextHeaderComponent } from '../text-header';
 import { WalletButtonComponent } from '../wallet-button';
 import { SUI_MAINNET_CHAIN } from '../../models';
+import { WalletStandardService } from '../../services/wallet-standard.service';
+import {RxPush} from '@rx-angular/template/push';
+import { StandardConnectMethod, Wallet } from '@mysten/wallet-standard';
+import { of } from 'rxjs';
+import has from 'lodash-es/has';
 @Component({
   selector: 'connect-wallet',
   templateUrl: './connect-wallet.component.html',
@@ -28,6 +31,7 @@ import { SUI_MAINNET_CHAIN } from '../../models';
   imports: [
     RxFor,
     RxIf,
+    RxPush,
     WalletIconPipe,
     TextCardComponent,
     TextHeaderComponent,
@@ -38,28 +42,14 @@ import { SUI_MAINNET_CHAIN } from '../../models';
 /**
  * Component for Connect Wallet Modal
  */
-export class ConnectWalletComponent implements OnInit {
+export class ConnectWalletComponent {
   private readonly dialogRef = inject(MatDialogRef);
-  public adapters = signal<StandardWalletAdapter[]>([]);
+  private readonly walletStandardService = inject(WalletStandardService);
+  public adapters = this.walletStandardService.availableWalletAdapters$;
   public data = inject(MAT_DIALOG_DATA);
   public error = signal('');
   public isConnecting = signal('');
   public sui = WalletIconEnum.Sui;
-
-  /**
-   * Lifecycle hook called when the component is initialized.
-   *
-   * @public
-   * @function
-   * @return {void}
-   */
-  public ngOnInit(): void {
-    const adapters = new WalletStandardAdapterProvider().get();
-
-    if (adapters.length) {
-      this.adapters.set(adapters);
-    }
-  }
 
   /**
    * Initiates the process of connecting a wallet using the provided wallet adapter.
@@ -69,35 +59,16 @@ export class ConnectWalletComponent implements OnInit {
    * @param {StandardWalletAdapter} adapter - The wallet adapter to use for connecting.
    * @return {void}
    */
-  public connectWallet(adapter: StandardWalletAdapter): void {
+  public connectWallet(adapter: Wallet): void {
     this.error.set('');
-    /**
-     * Sets the connecting state for the provided wallet adapter.
-     *
-     * @param {string} adapterName - The name of the wallet adapter being connected.
-     * @returns {void}
-     */
+   if(adapter && has(adapter?.features, 'standard:connect')) {
     this.isConnecting.set(adapter.name);
 
-    if (adapter.connected) {
-      /**
-       * Closes the dialog and returns account information and adapter name.
-       *
-       * @param {object} result - Result data to be returned upon successful connection.
-       * @param {Array<string>} result.accounts - Array of connected wallet accounts.
-       * @param {string} result.name - Name of the connected wallet adapter.
-       * @returns {void}
-       */
-      this.handleConnect(adapter);
-    } else {
-      /**
-       * Connects the wallet using the provided adapter and closes the dialog upon success.
-       * Dispatches an error action upon connection failure.
-       *
-       * @returns {void}
-       */
+    const feature = adapter.features['standard:connect'] as {
+      connect: StandardConnectMethod;
+    }
 
-      adapter
+    feature
         .connect()
         .then(() => {
           this.handleConnect(adapter);
@@ -106,7 +77,7 @@ export class ConnectWalletComponent implements OnInit {
           console.log(error, 'error')
           this.error.set(error.message ?? error.data ?? error.toString())
         });
-    }
+   }
   }
 
   /**
@@ -120,20 +91,20 @@ export class ConnectWalletComponent implements OnInit {
    * @param {StandardWalletAdapter} adapter - The wallet adapter to connect.
    * @returns {void} - This method does not return a value.
    */
-  private handleConnect(adapter: StandardWalletAdapter): void {
+  private handleConnect(adapter: Wallet): void {
     let account;
 
     if (
       this.data?.network === SUI_MAINNET_CHAIN &&
-      adapter.wallet.name === 'Frontier Wallet!'
+      adapter.name === 'Frontier Wallet!'
     ) {
-      account = adapter.wallet.accounts.find((account) =>
+      account = adapter.accounts.find((account) =>
         account.chains.includes('sui' as '${string}:${string}')
       );
     } else {
       account =
         this.data?.network &&
-        adapter.wallet.accounts.find((account) =>
+        adapter.accounts.find((account) =>
           account.chains.includes(this.data?.network)
         );
     }
