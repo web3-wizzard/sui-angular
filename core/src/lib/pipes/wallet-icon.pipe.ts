@@ -18,33 +18,33 @@ export class WalletIconPipe implements PipeTransform {
   transform(value?: string): string {
     switch (value) {
       case WalletIconEnum.Sui:
-        return 'sui';
+        return 'sui-angular/sui.svg';
       case WalletIconEnum.Suiet:
-        return 'suiet';
+        return 'sui-angular/suiet.svg';
       case WalletIconEnum.Elli:
-        return 'elli';
+        return 'sui-angular/elli.svg';
       case WalletIconEnum.Ethos:
-        return 'ethos';
+        return 'sui-angular/ethos.svg';
       case WalletIconEnum.Frontier:
-        return 'frontier';
+        return 'sui-angular/frontier.svg';
       case WalletIconEnum.Glass:
-        return 'glass';
+        return 'sui-angular/glass.svg';
       case WalletIconEnum.Martian:
-        return 'martian';
+        return 'sui-angular/martian.svg';
       case WalletIconEnum.Morphis:
-        return 'morphis';
+        return 'sui-angular/morphis.svg';
       case WalletIconEnum.Nightly:
-        return 'nightly';
+        return 'sui-angular/nightly.svg';
       case WalletIconEnum.OneKey:
-        return 'onekey';
+        return 'sui-angular/onekey.svg';
       case WalletIconEnum.SenSui:
-        return 'sensui';
+        return 'sui-angular/sensui.svg';
       case WalletIconEnum.Spacecy:
-        return 'spacecy';
+        return 'sui-angular/spacecy.jpg';
       case WalletIconEnum.Surf:
-        return 'surf';
+        return 'sui-angular/surf.jpg';
       default:
-        return 'sui';
+        return 'sui-angular/sui.svg';
     }
   }
 }

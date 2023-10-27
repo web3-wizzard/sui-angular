@@ -104,7 +104,7 @@ export class ConnectWalletComponent implements OnInit {
         })
         .catch((error) => {
           console.log(error, 'error')
-          this.error.set(error.message ?? error.toString())
+          this.error.set(error.message ?? error.data ?? error.toString())
         });
     }
   }

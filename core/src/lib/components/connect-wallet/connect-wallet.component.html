@@ -1,5 +1,5 @@
 <div class="flex h-full">
-  <div class="p-20 w-240">
+  <div class="p-20 w-240 overflow-y-auto">
     <text-header [text]="data.connectWalletText"></text-header>
     <ng-container *rxIf="adapters().length; else dummyAdapter">
       <wallet-button
@@ -33,7 +33,7 @@
 
     <ng-template #connecting>
       <div class="flex flex-col items-center" *rxIf="adapters().length; else registerWalletTmp">
-        <img [src]="'sui-angular/' + (isConnecting() | walletIcon) + '.svg'" width="72px"/>
+        <img [src]="isConnecting() | walletIcon" width="72px"/>
         <div class="text-20 text-primary mt-12">{{ data.openingText }} {{ isConnecting() }}</div>
         <div *rxIf="!error(); else errorTmp" class="text-tertiary text-13">
           {{ data.confirmConnectText }}

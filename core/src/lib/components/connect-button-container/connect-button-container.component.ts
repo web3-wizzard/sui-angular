@@ -95,7 +95,7 @@ export class ConnectButtonContainerComponent implements OnInit {
     setTimeout(() => {
       if (walletName && walletAccount) {
         const adapters = new WalletStandardAdapterProvider().get();
-        console.log(adapters, 'adapters')
+       
         const wallet = adapters.find((adapter) => adapter.name === walletName);
 
         if (wallet) {

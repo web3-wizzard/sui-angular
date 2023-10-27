@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {NgOptimizedImage} from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { WalletIconPipe } from '../../pipes';
 @Component({
   selector: 'wallet-button',
@@ -15,4 +15,8 @@ import { WalletIconPipe } from '../../pipes';
 export class WalletButtonComponent {
   @Input()
   public icon?: string;
+
+  public get _icon(): string | undefined {
+    return this.icon === 'GlassWallet' ? 'Glass Wallet' : this.icon;
+  }
 }
