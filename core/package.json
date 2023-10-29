@@ -1,6 +1,6 @@
 {
   "name": "@sui-angular/core",
-  "version": "0.0.15",
+  "version": "0.0.19",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0"
@@ -8,7 +8,7 @@
   "dependencies": {
     "tslib": "^2.3.0",
     "@angular/material": "^16.1.0",
-    "@mysten/wallet-adapter-wallet-standard": "^0.8.0",
+    "@mysten/wallet-standard": "^0.8.6",
     "@angular/cdk": "^16.1.0",
     "@rx-angular/template": "^16.1.0",
     "@rx-angular/cdk": "^16.0.0",

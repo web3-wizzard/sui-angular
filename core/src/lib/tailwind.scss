@@ -616,6 +616,10 @@ video {
   justify-content: center;
 }
 
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -672,4 +676,8 @@ video {
 
 .text-tertiary {
   color: var(--sa-color-text-tertiary, rgba(118, 122, 129, 1));
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }

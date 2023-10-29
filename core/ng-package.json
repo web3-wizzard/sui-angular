@@ -6,7 +6,7 @@
   },
   "allowedNonPeerDependencies": [
     "@angular/material",
-    "@mysten/wallet-adapter-wallet-standard",
+    "@mysten/wallet-standard",
     "@angular/cdk",
     "@rx-angular/template",
     "@rx-angular/cdk",

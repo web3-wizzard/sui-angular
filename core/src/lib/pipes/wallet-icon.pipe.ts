@@ -25,6 +25,7 @@ export class WalletIconPipe implements PipeTransform {
         return 'sui-angular/elli.svg';
       case WalletIconEnum.Ethos:
         return 'sui-angular/ethos.svg';
+      case WalletIconEnum.FrontierWallet:
       case WalletIconEnum.Frontier:
         return 'sui-angular/frontier.svg';
       case WalletIconEnum.Glass:

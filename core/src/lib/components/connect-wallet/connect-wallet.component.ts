@@ -5,9 +5,6 @@ import {
   signal,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {
-  StandardWalletAdapter,
-} from '@mysten/wallet-adapter-wallet-standard';
 import { RxIf } from '@rx-angular/template/if';
 import { RxFor } from '@rx-angular/template/for';
 import { WalletIconEnum } from '../../models';
@@ -20,7 +17,6 @@ import { SUI_MAINNET_CHAIN } from '../../models';
 import { WalletStandardService } from '../../services/wallet-standard.service';
 import {RxPush} from '@rx-angular/template/push';
 import { StandardConnectMethod, Wallet } from '@mysten/wallet-standard';
-import { of } from 'rxjs';
 import has from 'lodash-es/has';
 @Component({
   selector: 'connect-wallet',

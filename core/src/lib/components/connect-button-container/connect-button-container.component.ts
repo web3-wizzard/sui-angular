@@ -12,7 +12,7 @@ import { AccountWalletButtonComponent } from '../account-wallet-button';
 import { RxIf } from '@rx-angular/template/if';
 import { AuthService, OnConnectDataInterface } from '../../services';
 import { ConnectButtonContainerStore } from './connect-button-container.store';
-import { ConnectedWalletInterface, SUI_MAINNET_CHAIN } from '../../models';
+import { ConnectedWalletInterface } from '../../models';
 import { ButtonComponent } from '../button/button.component';
 import { WalletStandardService } from '../../services/wallet-standard.service';
 import { StandardConnectMethod, Wallet } from '@mysten/wallet-standard';
@@ -97,6 +97,9 @@ export class ConnectButtonContainerComponent implements OnInit {
         map((wallets: readonly Wallet[]) =>
           wallets.find((adapter) => adapter.name === walletName)
         ),
+        tap((walletAdapter: Wallet | undefined) => {
+          console.log(walletAdapter?.features, 'walletAdapter?.features')
+        }),
         filter((walletAdapter: Wallet | undefined): walletAdapter is Wallet => !!walletAdapter && has(walletAdapter?.features, 'standard:connect')),
         map((walletAdapter: Wallet) => walletAdapter.features['standard:connect'] as {
           connect: StandardConnectMethod;
@@ -155,7 +158,7 @@ export class ConnectButtonContainerComponent implements OnInit {
    */
   public async openConnectModal(): Promise<void> {
     const dialogRef = await this.authService.onConnect({
-      network: SUI_MAINNET_CHAIN,
+      network: this.translations?.network,
       connectWalletText: this.translations?.connectWalletText,
       whatIsWalletText: this.translations?.whatIsWalletText,
       easyLoginHeaderText: this.translations?.easyLoginHeaderText,
